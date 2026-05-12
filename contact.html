@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - PatilWebsmith</title>
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/contact.css">
+    <script src="/js/script.js"></script>
+   
+
+</head>
+<body>
+
+    <div id="navbar-placeholder"></div>
+
+    <section class="contact">
+        <h1 data-en="Contact Us" data-mr="संपर्क करा">Contact Us</h1>
+
+        <div class="contact-wrapper">
+
+            <!-- LEFT SIDE: INFO + MAP -->
+            <div class="contact-info">
+                <h2 data-en="Get in Touch" data-mr="आमच्याशी संपर्क साधा">
+                    Get in Touch
+                </h2>
+
+                <p>
+                    <strong data-en="Email:" data-mr="ई-मेल:">Email:</strong>
+                    patilwebsmith@gmail.com
+                </p>
+
+                <p>
+                    <strong data-en="Phone:" data-mr="फोन:">Phone:</strong>
+                    +91 9172497767
+                </p>
+
+                <p>
+                    <strong data-en="Address:" data-mr="पत्ता:">Address:</strong>
+                    Kolhapur, Maharashtra, India
+                </p>
+
+                <h2 data-en="Find Us" data-mr="आम्हाला शोधा" style="margin-top:25px;">
+                    Find Us
+                </h2>
+
+                <p class="section-subtitle"
+                   data-en="Visit our office or contact online"
+                   data-mr="कार्यालयात भेट द्या किंवा ऑनलाइन संपर्क साधा">
+                    Visit our office or contact online
+                </p>
+
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50394.29361285757!2d74.23886789999999!3d16.70846855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc1000cdec07a29%3A0xece8ea642952e42f!2sKolhapur%2C%20Maharashtra!5e1!3m2!1sen!2sin!4v1764072203847!5m2!1sen!2sin"
+                            style="border:0; width:100%; height:100%;"
+                            loading="lazy"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE: FORM -->
+            <form action="https://formspree.io/f/YOUR_FORM_ID"
+                  method="POST"
+                  class="contact-form">
+
+                <input type="text"
+                       name="name"
+                       placeholder="Your Name"
+                       required>
+
+                <input type="email"
+                       name="email"
+                       placeholder="Your Email"
+                       required>
+
+                <input type="tel"
+                       name="phone"
+                       placeholder="Phone Number"
+                       required>
+
+                <select name="service" required>
+                    <option value="">Select Service</option>
+                    <option value="ecommerce">E-Commerce Website</option>
+                    <option value="corporate">Corporate Website</option>
+                    <option value="custom">Custom Application</option>
+                </select>
+
+                <textarea name="message"
+                          rows="5"
+                          placeholder="Your Message"
+                          required></textarea>
+
+                <button type="submit">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        © 2025 PatilWebsmith. All rights reserved.
+    </footer>
+
+</body>
+</html>
