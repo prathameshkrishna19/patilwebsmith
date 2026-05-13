@@ -1,34 +1,46 @@
-<link href="/css/bootstrap.css" rel="stylesheet">
-<script src="/js/bootstrap.bundle.js"></script>
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
 
   <div class="container">
 
-    <a class="navbar-brand d-flex align-items-center" href="/index.html">
-      <img src="/images/logo.jpg" height="40" class="me-2">
+    <a class="navbar-brand d-flex align-items-center" href="../index.html">
+      <img src="../images/logo.jpg" height="40" class="me-2">
       <span class="fw-bold">PatilWebsmith</span>
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <!-- MOBILE TOGGLE -->
+    <button class="navbar-toggler"
+             id="menuToggle"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navMenu">
+
       <span class="navbar-toggler-icon"></span>
+
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <!-- NAVBAR -->
+    <div class="collapse navbar-collapse" id="navMenu">
 
       <ul class="navbar-nav ms-auto">
 
         <li class="nav-item">
-          <a class="nav-link" href="/index.html">Home</a>
+          <a class="nav-link" href="../index.html">Home</a>
         </li>
 
+        <!-- SERVICES DROPDOWN -->
         <li class="nav-item dropdown">
 
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+          <a class="nav-link dropdown-toggle"
+             href="#"
+             role="button"
+             data-bs-toggle="dropdown"
+             aria-expanded="false">
+
             Services
+
           </a>
 
-          <ul class="dropdown-menu shadow">
+          <ul class="dropdown-menu">
 
             <li><a class="dropdown-item" href="/services/ecommerce.html">E-Commerce</a></li>
             <li><a class="dropdown-item" href="/services/corporate.html">Corporate</a></li>
@@ -40,13 +52,20 @@
 
         </li>
 
+        <!-- PORTFOLIO DROPDOWN -->
         <li class="nav-item dropdown">
 
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+          <a class="nav-link dropdown-toggle"
+             href="#"
+             role="button"
+             data-bs-toggle="dropdown"
+             aria-expanded="false">
+
             Portfolio
+
           </a>
 
-          <ul class="dropdown-menu shadow">
+          <ul class="dropdown-menu">
 
             <li><a class="dropdown-item" href="/portfolio/ecommerce.html">Fashion E-Commerce</a></li>
             <li><a class="dropdown-item" href="/portfolio/manufacturing.html">Manufacturing</a></li>

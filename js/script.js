@@ -1,100 +1,83 @@
 // ------------------------------
-// LOAD PARTIAL HTML FILES (Navbar)
+// LOAD COMMON FILES
 // ------------------------------
 
 const partials = {
-    "navbar-placeholder": "/navbar.html"
+
+    head: "/partials/head.html",
+
+    navbar: "/partials/navbar.html",
+
+    scripts: "/partials/script.html"
+
 };
 
-Object.keys(partials).forEach(id => {
 
-    fetch(partials[id])
-        .then(res => {
+// LOAD HEAD
+fetch(partials.head)
 
-            if (!res.ok) {
-                throw new Error("HTTP error " + res.status);
-            }
+    .then(res => res.text())
 
-            return res.text();
-        })
+    .then(data => {
 
-        .then(data => {
+        document.head.insertAdjacentHTML("beforeend", data);
 
-            const element = document.getElementById(id);
-
-            if (element) {
-                element.innerHTML = data;
-
-                if (id === "navbar-placeholder") {
-                    initNavbarFeatures();
-                }
-            }
-
-        })
-
-        .catch(err => console.error("Error loading:", partials[id], err));
-
-});
-
-
-
-// ------------------------------
-// NAVBAR FEATURES
-// ------------------------------
-
-function initNavbarFeatures() {
-
-    const navMenu = document.getElementById("navMenu");
-    const menuToggle = document.getElementById("menuToggle");
-
-    if (!navMenu || !menuToggle) return;
-
-    // Mobile Menu Toggle
-    menuToggle.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
     });
 
 
-    // Mobile Dropdown
-    const dropdownBtns = document.querySelectorAll(".dropdown > a");
+// LOAD NAVBAR
+fetch(partials.navbar)
 
-    dropdownBtns.forEach(btn => {
+    .then(res => res.text())
 
-        btn.addEventListener("click", function (e) {
+    .then(data => {
 
-            if (window.innerWidth <= 992) {
+        document.getElementById("navbar-placeholder")
+            .innerHTML = data;
 
-                e.preventDefault();
+       // WAIT FOR BOOTSTRAP
+    setTimeout(() => {
 
-                const parent = this.parentElement;
+    const dropdownElementList =
+        document.querySelectorAll('.dropdown-toggle');
 
-                parent.classList.toggle("active");
+         dropdownElementList.forEach(dropdownToggle => {
 
-            }
+        new bootstrap.Dropdown(dropdownToggle);
+
+    });
+
+    }, 200);
+
+    });
+
+// LOAD SCRIPTS
+// LOAD SCRIPTS
+fetch(partials.scripts)
+
+    .then(res => res.text())
+
+    .then(data => {
+
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = data;
+
+        tempDiv.querySelectorAll("script").forEach(oldScript => {
+
+            const newScript = document.createElement("script");
+
+            // copy attributes
+            Array.from(oldScript.attributes).forEach(attr => {
+                newScript.setAttribute(attr.name, attr.value);
+            });
+
+            newScript.text = oldScript.text;
+
+            document.body.appendChild(newScript);
 
         });
 
     });
-
-
-    // Close menu when clicking outside
-    document.addEventListener("click", function (e) {
-
-        const nav = document.querySelector(".navbar");
-
-        if (!nav.contains(e.target)) {
-
-            navMenu.classList.remove("active");
-
-            document.querySelectorAll(".dropdown").forEach(dd => {
-                dd.classList.remove("active");
-            });
-
-        }
-
-    });
-
-}
 
 
 
@@ -102,20 +85,27 @@ function initNavbarFeatures() {
 // SMOOTH SCROLL
 // ------------------------------
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.addEventListener("DOMContentLoaded", () => {
 
-    anchor.addEventListener('click', function (e) {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-        e.preventDefault();
+        anchor.addEventListener('click', function (e) {
 
-        const target = document.querySelector(this.getAttribute('href'));
+            e.preventDefault();
 
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+            const target =
+                document.querySelector(this.getAttribute('href'));
+
+            if (target) {
+
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+            }
+
+        });
 
     });
 
@@ -123,22 +113,28 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 
 
+
 // ------------------------------
 // CONTACT FORM SUCCESS MESSAGE
 // ------------------------------
 
-const contactForm = document.querySelector('form[action*="formspree"]');
+document.addEventListener("DOMContentLoaded", () => {
 
-if (contactForm) {
+    const contactForm =
+        document.querySelector('form[action*="formspree"]');
 
-    contactForm.addEventListener('submit', function () {
+    if (contactForm) {
 
-        setTimeout(() => {
+        contactForm.addEventListener('submit', function () {
 
-            alert('✅ Thank you! We will contact you within 24 hours.');
+            setTimeout(() => {
 
-        }, 100);
+                alert('✅ Thank you! We will contact you within 24 hours.');
 
-    });
+            }, 100);
 
-}
+        });
+
+    }
+
+});

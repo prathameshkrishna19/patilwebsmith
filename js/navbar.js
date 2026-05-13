@@ -1,14 +1,61 @@
 document.addEventListener("DOMContentLoaded",function(){
 
-const menuToggle = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
+// const menuToggle = document.getElementById("menuToggle");
+// const navMenu = document.getElementById("navMenu");
 
-menuToggle.addEventListener("click",function(){
+// menuToggle.addEventListener("click",function(){
 
-navMenu.classList.toggle("active");
+// navMenu.classList.toggle("active");
+
+// });
+
+// ------------------------------
+// LOAD PARTIAL HTML FILES
+// ------------------------------
+
+const partials = {
+    "navbar-placeholder": "navbar.html"
+};
+
+Object.keys(partials).forEach(id => {
+
+    fetch(partials[id])
+
+        .then(res => {
+
+            if (!res.ok) {
+                throw new Error("HTTP error " + res.status);
+            }
+
+            return res.text();
+
+        })
+
+        .then(data => {
+
+            const element = document.getElementById(id);
+
+            if (element) {
+
+                element.innerHTML = data;
+
+                // Bootstrap dropdown init
+                const dropdownElementList =
+                    document.querySelectorAll('.dropdown-toggle');
+
+                dropdownElementList.forEach(dropdownToggle => {
+                    new bootstrap.Dropdown(dropdownToggle);
+                });
+
+            }
+
+        })
+
+        .catch(err =>
+            console.error("Error loading:", partials[id], err)
+        );
 
 });
-
 
 /* mobile dropdown */
 

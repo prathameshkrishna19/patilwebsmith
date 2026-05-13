@@ -18,7 +18,7 @@ document.querySelectorAll('.dropdown > a').forEach(link => {
 document.addEventListener('click', function(e) {
     const nav = document.querySelector('.nav-container');
     const navMenu = document.getElementById('navMenu');
-    if (!nav.contains(e.target)) {
+   if(nav && !nav.contains(e.target)){
         navMenu.classList.remove('active');
         document.querySelectorAll('.dropdown').forEach(dd => dd.classList.remove('active'));
     }
