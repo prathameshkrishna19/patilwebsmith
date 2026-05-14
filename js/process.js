@@ -1,25 +1,70 @@
-function toggleMenu() {
-    const navMenu = document.getElementById('navMenu');
-    navMenu.classList.toggle('active');
-}
+// ------------------------------
+// PROCESS SECTION
+// ------------------------------
 
-// Mobile dropdown toggle
-document.querySelectorAll('.dropdown > a').forEach(link => {
-    link.addEventListener('click', function(e) {
-        if (window.innerWidth <= 992) {
-            e.preventDefault();
-            const parent = this.parentElement;
-            parent.classList.toggle('active');
-        }
-    });
-});
+document.addEventListener("DOMContentLoaded", () => {
 
-// Close menu if clicked outside
-document.addEventListener('click', function(e) {
-    const nav = document.querySelector('.nav-container');
-    const navMenu = document.getElementById('navMenu');
-   if(nav && !nav.contains(e.target)){
-        navMenu.classList.remove('active');
-        document.querySelectorAll('.dropdown').forEach(dd => dd.classList.remove('active'));
+    const steps =
+        document.querySelectorAll(".step");
+
+    const details =
+        document.querySelectorAll(".process-detail");
+
+    const slides =
+        document.querySelectorAll(".carousel-slide");
+
+    let currentIndex = 0;
+
+    // SHOW STEP
+    function showStep(index) {
+
+        // remove active
+        steps.forEach(step =>
+            step.classList.remove("active")
+        );
+
+        details.forEach(detail =>
+            detail.classList.remove("active")
+        );
+
+        slides.forEach(slide =>
+            slide.classList.remove("active")
+        );
+
+        // add active
+        steps[index].classList.add("active");
+
+        details[index].classList.add("active");
+
+        slides[index].classList.add("active");
+
+        currentIndex = index;
     }
+
+    // CLICK EVENTS
+    steps.forEach((step, index) => {
+
+        step.addEventListener("click", () => {
+
+            showStep(index);
+
+        });
+
+    });
+
+    // AUTO SLIDE
+    setInterval(() => {
+
+        currentIndex++;
+
+        if (currentIndex >= steps.length) {
+
+            currentIndex = 0;
+
+        }
+
+        showStep(currentIndex);
+
+    }, 3000);
+
 });

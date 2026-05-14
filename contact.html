@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - PatilWebsmith</title>
-
-<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" type="image/png" href="/images/image.png">
+<meta name="description" content="Contact Patil Websmith for website design and development services.">
 <link rel="stylesheet" href="/css/contact.css">
           <script src="/js/script.js" defer></script>
 
@@ -59,48 +59,51 @@
                 </div>
             </div>
 
-            <!-- RIGHT SIDE: FORM -->
-            <form action="https://formspree.io/f/YOUR_FORM_ID"
-                  method="POST"
-                  class="contact-form">
+            <form  id="contactForm" action="https://formsubmit.co/ajax/prathameshkrishna19@gmail.com"
+          class="contact-form">
 
-                <input type="text"
-                       name="name"
-                       placeholder="Your Name"
-                       required>
+    <input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+    <input type="hidden"
+           name="_subject"
+           value="New Contact Form Message">
 
-                <input type="email"
-                       name="email"
-                       placeholder="Your Email"
-                       required>
+    <input type="text"
+           name="name"
+           placeholder="Your Name"
+           required>
 
-                <input type="tel"
-                       name="phone"
-                       placeholder="Phone Number"
-                       required>
+    <input type="email"
+           name="email"
+           placeholder="Your Email"
+           required>
 
-                <select name="service" required>
-                    <option value="">Select Service</option>
-                    <option value="ecommerce">E-Commerce Website</option>
-                    <option value="corporate">Corporate Website</option>
-                    <option value="custom">Custom Application</option>
-                </select>
+    <input type="tel"
+           name="phone"
+           placeholder="Phone Number"
+           required>
 
-                <textarea name="message"
-                          rows="5"
-                          placeholder="Your Message"
-                          required></textarea>
+    <select name="service" required>
 
-                <button type="submit">
-                    Send Message
-                </button>
-            </form>
+        <option value="">Select Service</option>
+        <option value="ecommerce">E-Commerce Website</option>
+        <option value="corporate">Corporate Website</option>
+        <option value="custom">Custom Application</option>
+
+    </select>
+
+    <textarea name="message"
+              rows="5"
+              placeholder="Your Message"
+              required></textarea>
+
+    <button type="submit">
+        Send Message
+    </button>
+
+</form>
         </div>
     </section>
-
-    <footer class="footer">
-        © 2025 PatilWebsmith. All rights reserved.
-    </footer>
 
 </body>
 </html>

@@ -8,7 +8,9 @@ const partials = {
 
     navbar: "/partials/navbar.html",
 
-    scripts: "/partials/script.html"
+    scripts: "/partials/script.html",
+
+    footer: "/partials/footer.html"
 
 };
 
@@ -52,7 +54,6 @@ fetch(partials.navbar)
     });
 
 // LOAD SCRIPTS
-// LOAD SCRIPTS
 fetch(partials.scripts)
 
     .then(res => res.text())
@@ -79,7 +80,19 @@ fetch(partials.scripts)
 
     });
 
+// LOAD FOOTER
+fetch(partials.footer)
 
+    .then(res => res.text())
+
+    .then(data => {
+
+        document.body.insertAdjacentHTML(
+            "beforeend",
+            data
+        );
+
+    });
 
 // ------------------------------
 // SMOOTH SCROLL
@@ -120,18 +133,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const contactForm =
-        document.querySelector('form[action*="formspree"]');
+    const contactForm = document.getElementById("contactForm");
 
     if (contactForm) {
 
-        contactForm.addEventListener('submit', function () {
+        contactForm.addEventListener("submit", async function (e) {
 
-            setTimeout(() => {
+            e.preventDefault();
 
-                alert('✅ Thank you! We will contact you within 24 hours.');
+            const formData = new FormData(contactForm);
 
-            }, 100);
+            try {
+
+                const response = await fetch(contactForm.action, {
+
+                    method: "POST",
+                    body: formData
+
+                });
+
+                if (response.ok) {
+
+                    alert('✅ Thank you! We will contact you within 24 hours.');
+
+                    contactForm.reset();
+
+                } else {
+
+                    alert("❌ Something went wrong.");
+
+                }
+
+            } catch (error) {
+
+                alert("❌ Error sending message.");
+
+            }
 
         });
 
